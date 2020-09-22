@@ -8,15 +8,15 @@ interface Stack<T> {
     fun peek(): T
 }
 
-class IntStack : Stack<Int> {
+class ArrayStack<T> : Stack<T> {
     private var top = -1
-    private val stack = mutableListOf<Int>()
+    private val stack = mutableListOf<T>()
 
-    override fun push(data: Int) {
+    override fun push(data: T) {
         stack.add(++top, data)
     }
 
-    override fun pop(): Int {
+    override fun pop(): T {
         val result = peek()
         stack.removeAt(top)
         top--
@@ -24,7 +24,7 @@ class IntStack : Stack<Int> {
         return result
     }
 
-    override fun peek(): Int {
+    override fun peek(): T {
         if (top < 0) throw EmptyStackException()
 
         return stack[top]
