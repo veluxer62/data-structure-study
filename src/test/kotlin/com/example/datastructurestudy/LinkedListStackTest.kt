@@ -5,14 +5,13 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.util.*
-import kotlin.system.measureTimeMillis
 
-internal class NodeStackTest {
-    lateinit var sut: NodeStack<Int>
+internal class LinkedListStackTest {
+    lateinit var sut: LinkedListStack<Int>
 
     @BeforeEach
     fun setUp() {
-        sut = NodeStack()
+        sut = LinkedListStack()
     }
 
     @Test
@@ -62,18 +61,5 @@ internal class NodeStackTest {
         assertThrows<EmptyStackException> {
             sut.peek()
         }
-    }
-
-    @Test
-    fun speed_test() {
-        val elapsed = measureTimeMillis {
-            (1..999999999).forEach {
-                sut.push(it)
-                sut.peek()
-                sut.pop()
-            }
-        }
-
-        println(elapsed)
     }
 }
