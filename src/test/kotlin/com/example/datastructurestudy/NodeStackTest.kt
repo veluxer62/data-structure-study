@@ -1,19 +1,18 @@
 package com.example.datastructurestudy
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.util.*
 import kotlin.system.measureTimeMillis
 
-internal class IntStackTest {
-    lateinit var sut: IntStack
+internal class NodeStackTest {
+    lateinit var sut: NodeStack<Int>
 
     @BeforeEach
     fun setUp() {
-        sut = IntStack()
+        sut = NodeStack()
     }
 
     @Test

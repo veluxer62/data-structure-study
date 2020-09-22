@@ -6,7 +6,6 @@ interface Stack<T> {
     fun push(data: T)
     fun pop(): T
     fun peek(): T
-    fun print(): String
 }
 
 class IntStack : Stack<Int> {
@@ -30,8 +29,29 @@ class IntStack : Stack<Int> {
 
         return stack[top]
     }
+}
 
-    override fun print(): String {
-        return stack.toString()
+class NodeStack<T> : Stack<T> {
+    private inner class Node<T>(val data: T) {
+        var next: Node<T>? = null
+    }
+
+    private var top: Node<T>? = null
+
+    override fun push(data: T) {
+        val node = Node(data)
+        node.next = top
+        top = node
+    }
+
+    override fun pop(): T {
+        val result = peek()
+        top = top?.next
+
+        return result
+    }
+
+    override fun peek(): T {
+        return top?.data ?: throw EmptyStackException()
     }
 }
